@@ -30,6 +30,7 @@ const usersRouter = require('./routes/users');
 const dishRouter = require('./routes/dishRouter');
 const promoRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
+const uploadRouter = require('./routes/uploadRouter');
 
 const app = express();
 
@@ -40,6 +41,8 @@ app.all('*', (req, res, next) => {
     res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
   }
 });
+
+app.use('/imageUpload', uploadRouter);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
