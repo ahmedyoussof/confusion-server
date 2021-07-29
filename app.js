@@ -8,7 +8,6 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const mongoose = require('mongoose');
-const Dishes = require('./models/dishes');
 
 const config = require('./config')
 
@@ -31,6 +30,7 @@ const dishRouter = require('./routes/dishRouter');
 const promoRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
 const uploadRouter = require('./routes/uploadRouter');
+const favoriteRouter = require('./routes/favoriteRouter');
 
 const app = express();
 
@@ -74,6 +74,7 @@ app.use('/users', usersRouter);
 app.use('/dishes', dishRouter);
 app.use('/promotions', promoRouter);
 app.use('/leaders', leaderRouter);
+app.use('/favorites', favoriteRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
